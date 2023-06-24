@@ -7,6 +7,7 @@ import edu.pe.upc.proyectofinal.entities.Trabajador;
 import edu.pe.upc.proyectofinal.services.IClienteService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class ClienteController {
         iCS.insert(t);
     }
     @GetMapping
+
     public List<ClienteDTO> list() {
         return iCS.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
