@@ -1,6 +1,7 @@
 package edu.pe.upc.proyectofinal.controllers;
 
 import edu.pe.upc.proyectofinal.dtos.CotizarDTO;
+import edu.pe.upc.proyectofinal.dtos.CotizarTrabajadorDTO;
 import edu.pe.upc.proyectofinal.entities.Cotizar;
 import edu.pe.upc.proyectofinal.services.ICotizarService;
 import org.modelmapper.ModelMapper;
@@ -46,5 +47,11 @@ public class CotizarController {
         ModelMapper m = new ModelMapper();
         Cotizar t = m.map(dto, Cotizar.class);
         nS.insert(t);
+    }
+
+    @GetMapping("/soli-count")
+    public List<CotizarTrabajadorDTO> getBookCountByAuthor() {
+        List<CotizarTrabajadorDTO> cotizarTrabajadors = nS.reporte01();
+        return cotizarTrabajadors;
     }
 }
